@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import axios from 'axios';
 const cors = require('cors');
 
-import { validateQueryParams, QueryParams } from './middleware/validateQueryparams';
+import { validateQueryParams, QueryParams } from './middleware/validateQueryParams';
 const app = express();
 const port = 3000;
 
@@ -26,11 +26,11 @@ app.get('/countryName' , async (req: Request, res: Response) : Promise<any> => {
 
     try {
       const response = await axios.get(`https://api.freecurrencyapi.com/v1/currencies?apikey=${API_KEY}`);
-      return res.status(200).send({status : "OK" , data : response.data})
+      return res.status(200).json({status : "OK" , data : response.data})
       
     } catch (error) {
       console.error(error);
-      return res.status(500).send({error : 'Error fetching country currency list'});
+      return res.status(500).json({error : 'Error fetching country currency list'});
     }
   });
 
@@ -44,11 +44,11 @@ app.get('/currencyConverter',validateQueryParams , async (req: Request<QueryPara
                   : `historical?apikey=${API_KEY}&base_currency=${base_currency}&currencies=${currencies}&date=${date}`
     try {
       const response = await axios.get(`${currencyApi}`);
-      return res.status(200).send({status : "OK" , data : response.data}); 
+      return res.status(200).json({status : "OK" , data : response.data}); 
       
     } catch (error) {
       console.error(error);
-      return res.status(500).send({error : 'Error fetching currency data'});
+      return res.status(500).json({error : 'Error fetching currency data'});
     }
   });
 
