@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import axios from 'axios';
 const cors = require('cors');
-const routes = require('./src/routes.ts');
+import routes from './src/routes';
 
 import { validateQueryParams, QueryParams } from './src/middleware/validateQueryParams';
 const app = express();

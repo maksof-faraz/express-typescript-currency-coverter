@@ -1,6 +1,13 @@
 import express, { Request, Response } from "express";
 
-exports.convertCurrency = async(req : Request, res : Response)=>{
+const convertCurrency = async(req : Request, res : Response)=>{
     return res.status(200).send({ status: "OK", message: "Converted" });
 
 }
+
+const convertCurrency2 = async(req : Request, res : Response)=>{
+    return res.status(200).send({ status: "OK", message: "Converted2" });
+
+}
+
+export default {convertCurrency , convertCurrency2}
