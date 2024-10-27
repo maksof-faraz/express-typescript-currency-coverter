@@ -8,6 +8,7 @@ export enum TypeEnum {
   
   // Define the interface for query parameters
   export interface QueryParams {
+    amount? :number;
     base_currency: string;
     currencies: string;
     type: TypeEnum;
