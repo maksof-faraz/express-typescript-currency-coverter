@@ -15,7 +15,7 @@ export enum TypeEnum {
     date?: string; // Optional field
   }
 
-  export  function validateQueryParams(req: Request <QueryParams>, res: Response, next: NextFunction) : any {
+  export  function validateQueryParams(req: Request <QueryParams>, res: Response, next: NextFunction)  {
     const { base_currency, currencies, type, date } = req.query;
 
     if (!base_currency || typeof base_currency !== 'string') {
