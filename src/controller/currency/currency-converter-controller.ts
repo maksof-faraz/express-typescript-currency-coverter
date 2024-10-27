@@ -17,7 +17,6 @@ const countryName = async(req : Request, res : Response)=>{
         console.error(error);
         return res.status(500).json({error : 'Error fetching country currency list'});
       }
-    return res.status(200).send({ status: "OK", message: "Converted" });
 
 }
 
