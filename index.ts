@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import axios from 'axios';
 const cors = require('cors');
 
-import { validateQueryParams, QueryParams } from './middleware/validateQueryParams';
+import { validateQueryParams, QueryParams } from './src/middleware/validateQueryParams';
 const app = express();
 const port = 3000;
 
@@ -57,3 +57,5 @@ app.get('/currencyConverter',validateQueryParams , async (req: Request<QueryPara
 app.listen(port, () => {
   return console.log(`Server is listening on ${port}`)
 })
+
+module.exports = app;
