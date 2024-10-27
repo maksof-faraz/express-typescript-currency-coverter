@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import axios from 'axios';
 const cors = require('cors');
+const routes = require('./src/routes.ts');
 
 import { validateQueryParams, QueryParams } from './src/middleware/validateQueryParams';
 const app = express();
@@ -21,6 +22,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Server is responding");
 })
 
+
+app.use('/api', routes);
 
 app.get('/countryName' , async (req: Request, res: Response) : Promise<any> => {
 
