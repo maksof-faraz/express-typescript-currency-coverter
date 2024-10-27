@@ -1,13 +1,16 @@
 import express, { Request, Response } from "express";
 import axios from 'axios';
 const cors = require('cors');
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load .env file
 import routes from './src/routes';
 
 import { validateQueryParams, QueryParams } from './src/middleware/validateQueryParams';
 const app = express();
-const port = 3000;
+const PORT =  process.env.PORT || 3000;
 
-const API_KEY = "4E0VK7BnkdeUuh1vegAt808v2IUjzUR6lxcvBMT2";
+const API_KEY = process.env.API_KEY;
 
 app.use(cors());
 app.options('*', cors());
@@ -19,7 +22,7 @@ app.use(function(req, res, next) { //allow cross origin requests
 });
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Server is responding");
+  res.send(`Server is responding ${PORT}`);
 })
 
 
@@ -57,8 +60,8 @@ app.get('/currencyConverter',validateQueryParams , async (req: Request<QueryPara
 
 
 
-app.listen(port, () => {
-  return console.log(`Server is listening on ${port}`)
+app.listen(PORT, () => {
+  return console.log(`Server is listening on ${PORT}`)
 })
 
 module.exports = app;
